@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import useToggleState from "../../hooks/useToggleState";
+import "./todo.styles.css";
 
-const Todo = ({ id, task, removeTodo, editTodo }) => {
+const Todo = ({ id, task, completed, removeTodo, editTodo }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [todo, setTodo] = useState(task);
+  const [completedTask, toggleCompletedTask] = useToggleState(completed);
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -25,7 +28,12 @@ const Todo = ({ id, task, removeTodo, editTodo }) => {
     <div className="todo">
       <button onClick={() => setIsEdit(true)}>Edit</button>
       <button onClick={() => removeTodo(id)}>X</button>
-      <li>{task}</li>
+      <li
+        onClick={toggleCompletedTask}
+        className={completedTask ? "completed" : ""}
+      >
+        {task}
+      </li>
     </div>
   );
 };

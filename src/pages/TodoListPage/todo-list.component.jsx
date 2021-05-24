@@ -27,11 +27,12 @@ const TodoList = () => {
       <TodoForm createTodo={create} />
       <h1>Todo List!</h1>
       <ul>
-        {todos.map(({ id, task }) => (
+        {todos.map(({ id, task, ...restProps }) => (
           <Todo
             key={id}
             id={id}
             task={task}
+            {...restProps}
             removeTodo={remove}
             editTodo={editTodo}
           />
