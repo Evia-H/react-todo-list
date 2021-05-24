@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useToggleState from "../../hooks/useToggleState";
-import "./todo.styles.css";
+import "./todo.styles.scss";
 
 const Todo = ({ id, task, completed, removeTodo, editTodo }) => {
   const [isEdit, setIsEdit] = useState(false);

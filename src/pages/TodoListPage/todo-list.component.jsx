@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Todo from "../../components/Todo/todo.component";
 import TodoForm from "../../components/TodoForm/todo-form.component";
+import "./todo-list.styles.scss";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `you clicked ${count} times`;
+  });
 
   const create = (newTodo) => {
     setTodos((todos) => [...todos, newTodo]);
@@ -38,6 +44,11 @@ const TodoList = () => {
           />
         ))}
       </ul>
+
+      <div className="counter">
+        <h1>you clicked:{count}</h1>
+        <button onClick={() => setCount(count + 1)}>Click Me</button>
+      </div>
     </div>
   );
 };

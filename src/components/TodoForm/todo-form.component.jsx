@@ -1,6 +1,7 @@
 import React from "react";
 import useInputState from "../../hooks/useInputState";
 import uuid from "uuid/v4";
+import "./todo-form.styles.scss";
 
 const TodoForm = ({ createTodo }) => {
   const [task, updateTask, resetTask] = useInputState("");
@@ -12,7 +13,7 @@ const TodoForm = ({ createTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todo-form" onSubmit={handleSubmit}>
       <label htmlFor="task">New Todo</label>
       <input
         type="text"
